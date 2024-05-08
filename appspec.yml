@@ -1,0 +1,14 @@
+version: 0.0
+os: windows
+files:
+  - source: /
+    destination: C:\inetpub\wwwroot\WebApp
+hooks:
+  BeforeInstall:
+    - location: scripts\stop_IIS.ps1
+      timeout: 300
+      runas: Administrator
+  AfterInstall:
+    - location: scripts\start_IIS.ps1
+      timeout: 300
+      runas: Administrator
